@@ -5,4 +5,4 @@ Vitor Leonardi NUSP:10716567
 
 
 
-Repositório contendo os códigos e monografias dos trabalhos da discilpina de Sistemas Operacionai I.
+Repositório contendo os códigos e monografias dos trabalhos da discilpina de Sistemas Operacionais I.
