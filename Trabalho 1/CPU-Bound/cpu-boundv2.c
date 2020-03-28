@@ -22,7 +22,7 @@ int main() {
             for( i=0;i<10;i++ ) {
           printf("%d ", a[i]);
        }
-        printf("Fatorial de %d = %llu", n, fat);
+        printf("\nFatorial de %d = %llu", n, fat);
 
 
     return 0;
