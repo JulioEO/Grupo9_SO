@@ -1,4 +1,5 @@
 //programa que calcula o fatorial de um numero, feito para exemplificar o comportamento CPU-bound
+//o programa passas a maior parte do tempo de execucao realizando a multiplicacao do fatorial
 #include <stdio.h>
 
 int main() {
