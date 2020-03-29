@@ -1,1 +1,5 @@
 Repositório do Trabalho 1
+
+Foram feitos 5 programas. Três programs exemplificam a utilização de system calls, divididos etre as três areas de gerenciamento de memória,
+entrada, saída e arquivos e a parte de gerenciamento de processos. Os outros dois programas exemplificam comportamentos de processos CPU-bound
+e IO-Bound.
