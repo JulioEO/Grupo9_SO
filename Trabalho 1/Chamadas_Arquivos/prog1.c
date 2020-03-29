@@ -12,7 +12,7 @@ int main(){
 	char texto[26];
 	char path[100];
 	getcwd(path,100);
-	strncat(path,"Grupo_SO/Trabalho\ 1/Chamadas_arquivos/arquivo",100);
+	strncat(path,"Grupo_SO/Trabalho 1/Chamadas_arquivos/arquivo",100);
 	int arq = open(path,O_RDONLY);
 	int b = read(arq,texto,25);
 	texto[25] = '\0';
