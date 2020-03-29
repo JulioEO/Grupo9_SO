@@ -16,7 +16,7 @@ int main(){
 	int arq = open(path,O_RDONLY);
 	int b = read(arq,texto,25);
 	texto[25] = '\0';
-	puts(texto);
+	puts(path);
 	int a = close(arq);
 	return 0;
 }
