@@ -10,7 +10,7 @@
 #include <unistd.h>
 int main(){
 	char texto[26];
-	char path[100];
+	char path[10000];
 	getcwd(path,100);
 	//strncat(path,"/arquivo",100);
 	//int arq = open(path,O_RDONLY);
