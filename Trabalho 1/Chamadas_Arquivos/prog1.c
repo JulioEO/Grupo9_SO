@@ -8,7 +8,7 @@
 #include <unistd.h>
 int main(){
 	char texto[26];
-	int arq = open("arquivo",O_RDONLY);
+	int arq = open("./Grupo9_SO/Trabalho\ 1/Chamadas_Arquivos/arquivo",O_RDONLY);
 	int b = read(arq,texto,25);
 	texto[25] = '\0';
 	puts(texto);
