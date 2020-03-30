@@ -13,7 +13,7 @@ int main(){
 	char path[100];
 	getcwd(path,100);
 	//strncat(path,"/programa1/arquivo",100);
-	int arq = open(path,O_RDONLY);
+	int arq = open("arquivo",O_RDONLY);
 	int b = read(arq,texto,25);
 	texto[25] = '\0';
 	puts(texto);
