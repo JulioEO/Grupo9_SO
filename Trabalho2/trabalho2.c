@@ -37,6 +37,8 @@ int main(){
 
      pthread_join( cons, NULL);
      pthread_join( prod, NULL);
+	
+	puts("\n\nFIM!!!!!!!\n\n");
 
 	return 0;
 }
@@ -45,7 +47,7 @@ int main(){
 void *consumir( void *ptr){
      pilha* b = (pilha*) ptr;
      int n;
-     for(int j = 0; j<100*TAMANHO;j++){//repeticoes, para testar o codigo
+     for(int j = 0; j<10*TAMANHO;j++){//repeticoes, para testar o codigo
           regiao_critica(b, &n , -1);
      }
 }
@@ -55,7 +57,7 @@ void *consumir( void *ptr){
 void *produzir( void *ptr){
      pilha* b = (pilha*) ptr;
      srand(time(0));
-     for(int j = 0; j<100*TAMANHO;j++){//repeticoes, para testar o codigo
+     for(int j = 0; j<10*TAMANHO;j++){//repeticoes, para testar o codigo
           int a = rand() % 100;
           regiao_critica(b ,NULL , a);
      }
