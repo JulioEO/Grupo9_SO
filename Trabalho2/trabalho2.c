@@ -9,7 +9,7 @@ pthread_mutex_t lock;
 
 typedef struct{
           int lista[TAMANHO];
-          int livre;
+          int livre;// proximo espaco vazio
 }pilha;
 
 void *consumir( void *);
@@ -62,7 +62,7 @@ void *produzir( void *ptr){
           printf("Produzido %d posicao %d\n", a, b->livre -1);
      }
 }
-// regiao critica
+// regiao critica, eu nao tenho certeza se o mutex funciona em uma funcao chamada por um thread.
 void regiao_critica(pilha* buf,int *c, int p){
 
      pthread_mutex_lock(&lock);
