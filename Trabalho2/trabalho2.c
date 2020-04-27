@@ -20,8 +20,8 @@ int main(){
 
      pilha *buffer;
      //inicializa o buffer
-     for(int i = 0; i< TAMANHO; i++) (*buffer).lista[i] = -1;
-     (*buffer).livre = 0;
+     for(int i = 0; i< TAMANHO; i++) buffer->lista[i] = -1;
+     buffer->livre = 0;
 
 
      pthread_t prod, cons;
@@ -73,7 +73,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           buf->livre++;
      }
      //le do buffer
-     else if(p = -1 && buf->livre > 0){
+     else if(p == -1 && buf->livre > 0){
           buf->livre--;
           *c = buf->lista[buf->livre];
           buf->lista[buf->livre +1 ] = -1;
