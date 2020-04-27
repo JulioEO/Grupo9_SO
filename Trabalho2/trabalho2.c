@@ -47,7 +47,6 @@ void *consumir( void *ptr){
      int n;
      for(int j = 0; j<100*TAMANHO;j++){//repeticoes, para testar o codigo
           regiao_critica(b, &n , -1);
-          printf("Consumido %d posicao %d\n", n, b->livre -1);
      }
 }
 
@@ -59,7 +58,6 @@ void *produzir( void *ptr){
      for(int j = 0; j<100*TAMANHO;j++){//repeticoes, para testar o codigo
           int a = rand() % 100;
           regiao_critica(b ,NULL , a);
-          printf("Produzido %d posicao %d\n", a, b->livre -1);
      }
 }
 // regiao critica, eu nao tenho certeza se o mutex funciona em uma funcao chamada por um thread.
@@ -70,13 +68,16 @@ void regiao_critica(pilha* buf,int *c, int p){
      //escreve noo buffer
      if (c == NULL && buf->livre < TAMANHO){
           buf->lista[buf->livre] = p;
+	  printf("Produzido %d posicao %d\n",  buf->lista[buf->livre], buf->livre);
           buf->livre++;
+	  
      }
      //le do buffer
      else if(p == -1 && buf->livre > 0){
+	  printf("Produzido %d posicao %d\n",  buf->lista[buf->livre -1 ], buf->livre -1);
           buf->livre--;
           *c = buf->lista[buf->livre];
-          buf->lista[buf->livre +1 ] = -1;
+          buf->lista[buf->livre] = -1;
      }
      pthread_mutex_unlock(&lock);
 }
