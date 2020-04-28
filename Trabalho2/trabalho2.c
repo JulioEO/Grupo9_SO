@@ -57,7 +57,6 @@ void *consumir( void *ptr){
 	     k++;
           regiao_critica(b, &n , -1);
      }
-     pthread_cond_signal(&dormir);
 }
 
 
@@ -72,7 +71,6 @@ void *produzir( void *ptr){
           regiao_critica(b ,NULL , a);
      }
 	fim_prod = 1;
-     pthread_cond_signal(&dormir);
 }
 // regiao critica
 void regiao_critica(pilha* buf,int *c, int p){
