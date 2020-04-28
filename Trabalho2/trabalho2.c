@@ -8,7 +8,7 @@
 pthread_mutex_t lock;
 pthread_cond_t dormir;
 int k = 0;
-int fim_prod = 0;//flag indeca se o produtor ja finalizou 
+int fim_prod = 0;//flag indiica se o produtor ja finalizou 
 typedef struct{
           int lista[TAMANHO];
           int livre;
@@ -79,7 +79,7 @@ void regiao_critica(pilha* buf,int *c, int p){
 
      pthread_mutex_lock(&lock);
 
-     //escreve noo buffer
+     //escreve no buffer
      if (c == NULL){
           if (buf->livre == 0) pthread_cond_signal(&dormir);
           if(buf->livre < TAMANHO){
