@@ -12,6 +12,8 @@ int k = 0;
 typedef struct{
           int lista[TAMANHO];
           int livre;
+          int vazios;
+          int ocupados;
 }pilha;
 
 void *consumir( void *);
@@ -80,6 +82,10 @@ void regiao_critica(pilha* buf,int *c, int p){
           if(buf->livre < TAMANHO){
                buf->lista[buf->livre] = p;
                printf("%d - Produzido %d posicao %d\n", k, buf->lista[buf->livre], buf->livre);
+               buf->livres--;
+               buf->ocupados++;
+               printf("Espacos livres %d\n",buf->livres );
+               printf("Espacos ocupados %d\n",buf->ocupados);
                buf->livre++;
           }else pthread_cond_wait(&dormir,&lock);
           
@@ -90,6 +96,10 @@ void regiao_critica(pilha* buf,int *c, int p){
           if(buf->livre > 0){
                buf->livre--;
                printf("%d - Consumido %d posicao %d\n",k,  buf->lista[buf->livre], buf->livre);
+               buf->livres++;
+               buf->ocupados--;
+               printf("Espacos livres %d\n",buf->livres );
+               printf("Espacos ocupados %d\n",buf->ocupados);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
           }else pthread_cond_wait(&dormir,&lock);
