@@ -8,7 +8,7 @@
 pthread_mutex_t lock;
 pthread_cond_t dormir;
 int k = 0;
-
+int fim_prod = 0;//flag indeca se o produtor ja finalizou 
 typedef struct{
           int lista[TAMANHO];
           int livre;
@@ -71,6 +71,7 @@ void *produzir( void *ptr){
           a = rand() % 100;
           regiao_critica(b ,NULL , a);
      }
+	fim_prod = 1;
      pthread_cond_signal(&dormir);
 }
 // regiao critica
@@ -104,7 +105,7 @@ void regiao_critica(pilha* buf,int *c, int p){
                printf("Espacos ocupados %d\n",buf->ocupados);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
-          }else pthread_cond_wait(&dormir,&lock);
+          }else if(fim_prod == 0) pthread_cond_wait(&dormir,&lock);
      }
      pthread_mutex_unlock(&lock);
 }
