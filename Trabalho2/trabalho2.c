@@ -50,6 +50,7 @@ void *consumir( void *ptr){
      int n;
 
      for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
+	     k++;
           regiao_critica(b, &n , -1);
      }
      pthread_cond_signal(&dormir);
@@ -62,6 +63,7 @@ void *produzir( void *ptr){
      srand(time(0));
      int a;
      for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
+	     k++;
           a = rand() % 100;
           regiao_critica(b ,NULL , a);
      }
@@ -77,7 +79,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           if (buf->livre == 0) pthread_cond_signal(&dormir);
           if(buf->livre < TAMANHO){
                buf->lista[buf->livre] = p;
-               printf("%d - Produzido %d posicao %d\n", ++k, buf->lista[buf->livre], buf->livre);
+               printf("%d - Produzido %d posicao %d\n", k, buf->lista[buf->livre], buf->livre);
                buf->livre++;
           }else pthread_cond_wait(&dormir,&lock);
           
@@ -87,7 +89,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           if (buf->livre == TAMANHO) pthread_cond_signal(&dormir);
           if(buf->livre > 0){
                buf->livre--;
-               printf("%d - Consumido %d posicao %d\n",++k,  buf->lista[buf->livre], buf->livre);
+               printf("%d - Consumido %d posicao %d\n",k,  buf->lista[buf->livre], buf->livre);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
           }else pthread_cond_wait(&dormir,&lock);
