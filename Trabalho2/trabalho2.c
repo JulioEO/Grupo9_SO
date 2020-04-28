@@ -26,6 +26,8 @@ int main(){
      //inicializa o buffer
      for(int i = 0; i< TAMANHO; i++) buffer->lista[i] = -1;
      buffer->livre = 0;
+     buffer->livres = TAMANHO;
+     buffer->ocupados = 0;
 
 
      pthread_t prod, cons;
