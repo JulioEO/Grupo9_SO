@@ -26,7 +26,7 @@ int main(){
      //inicializa o buffer
      for(int i = 0; i< TAMANHO; i++) buffer->lista[i] = -1;
      buffer->livre = 0;
-     buffer->livres = TAMANHO;
+     buffer->vazios = TAMANHO;
      buffer->ocupados = 0;
 
 
@@ -83,7 +83,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           if(buf->livre < TAMANHO){
                buf->lista[buf->livre] = p;
                printf("%d - Produzido %d posicao %d\n", k, buf->lista[buf->livre], buf->livre);
-               buf->livres--;
+               buf->vazios--;
                buf->ocupados++;
                printf("Espacos livres %d\n",buf->livres );
                printf("Espacos ocupados %d\n",buf->ocupados);
@@ -97,7 +97,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           if(buf->livre > 0){
                buf->livre--;
                printf("%d - Consumido %d posicao %d\n",k,  buf->lista[buf->livre], buf->livre);
-               buf->livres++;
+               buf->vazios++;
                buf->ocupados--;
                printf("Espacos livres %d\n",buf->livres );
                printf("Espacos ocupados %d\n",buf->ocupados);
