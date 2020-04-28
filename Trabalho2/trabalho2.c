@@ -12,6 +12,8 @@ int k = 0;
 typedef struct{
           int lista[TAMANHO];
           int livre;
+          int vazios;
+          int ocupados;
 }pilha;
 
 void *consumir( void *);
@@ -24,6 +26,8 @@ int main(){
      //inicializa o buffer
      for(int i = 0; i< TAMANHO; i++) buffer->lista[i] = -1;
      buffer->livre = 0;
+ 	 buffer->vazios = TAMANHO;
+ 	 buffer->ocupados = 0;
 
 
      pthread_t prod, cons;
@@ -50,7 +54,6 @@ void *consumir( void *ptr){
      int n;
 
      for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
-	     k++;
           regiao_critica(b, &n , -1);
      }
      pthread_cond_signal(&dormir);
@@ -63,7 +66,6 @@ void *produzir( void *ptr){
      srand(time(0));
      int a;
      for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
-	     k++;
           a = rand() % 100;
           regiao_critica(b ,NULL , a);
      }
@@ -79,7 +81,11 @@ void regiao_critica(pilha* buf,int *c, int p){
           if (buf->livre == 0) pthread_cond_signal(&dormir);
           if(buf->livre < TAMANHO){
                buf->lista[buf->livre] = p;
-               printf("%d - Produzido %d posicao %d\n", k, buf->lista[buf->livre], buf->livre);
+               printf("%d - Produzido %d posicao %d\n", ++k, buf->lista[buf->livre], buf->livre);
+               buf->livres--;
+               buf->ocupados++;
+               printf("Espacos livres %d\n",buf->livres );
+               printf("Espacos ocupados %d\n",buf->ocupados);
                buf->livre++;
           }else pthread_cond_wait(&dormir,&lock);
           
@@ -89,7 +95,11 @@ void regiao_critica(pilha* buf,int *c, int p){
           if (buf->livre == TAMANHO) pthread_cond_signal(&dormir);
           if(buf->livre > 0){
                buf->livre--;
-               printf("%d - Consumido %d posicao %d\n",k,  buf->lista[buf->livre], buf->livre);
+               printf("%d - Consumido %d posicao %d\n",++k,  buf->lista[buf->livre], buf->livre);
+               buf->livres++;
+               buf->ocupados--;
+               printf("Espacos livres %d\n",buf->livres );
+               printf("Espacos ocupados %d\n",buf->ocupados);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
           }else pthread_cond_wait(&dormir,&lock);
