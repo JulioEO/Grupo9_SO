@@ -22,7 +22,7 @@ void regiao_critica(pilha*,int* , int);
 
 int main(){
 
-     pilha *buffer;
+     pilha *buffer = (pilha*)malloc(sizeof(pilha));
      //inicializa o buffer
      for(int i = 0; i< TAMANHO; i++) buffer->lista[i] = -1;
      buffer->livre = 0;
