@@ -7,7 +7,7 @@
 //compilar com : gcc -pthread -o trabalho2 trabalho2.c
 pthread_mutex_t lock;
 pthread_cond_t dormir;
-int k = 0;
+int k = 0;//marca o numero da iteracao atual
 int fim_prod = 0;//flag indiica se o produtor ja finalizou 
 typedef struct{
           int lista[TAMANHO];
