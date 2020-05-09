@@ -1,1 +1,5 @@
 Repositorio para o segundo trabalho de Sistemas Operacionais
+
+ O programa contém uma função que gera numeros aleatórios, de 0 a 100, e os coloca em um buffer estilo pilha de espaço limitado, e uma função consumidora
+que lê o valor no topo do buffer. O programa produz e consome números diversas vezes durante sua execução, imprimindo quantos espaços vazios
+e utilizados existem. Como o programa é automático, basta que o usuário compile e rode para ver os resultados.
