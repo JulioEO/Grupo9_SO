@@ -79,7 +79,7 @@ void regiao_critica(pilha* buf,int *c, int p){
 
      //produtor escreve no buffer
      if (c == NULL){
-          if (buf->livre == 0) pthread_cond_signal(&dormir);
+          if (buf->livre == 0) pthread_cond_signal(&dormir); //consumidor esvaziou o buffer e dormiu, acorda o consumidor
           if(buf->livre < TAMANHO){
                buf->lista[buf->livre] = p;
                printf("%d - Produzido %d posicao %d\n", k, buf->lista[buf->livre], buf->livre);
@@ -88,12 +88,12 @@ void regiao_critica(pilha* buf,int *c, int p){
                printf("Espacos livres %d\n",buf->vazios );
                printf("Espacos ocupados %d\n",buf->ocupados);
                buf->livre++;
-          }else pthread_cond_wait(&dormir,&lock);
+          }else pthread_cond_wait(&dormir,&lock); //buffer encheu, produtor dorme
           
      }
      //consumidor le do buffer
      else if (p == -1){
-          if (buf->livre == TAMANHO) pthread_cond_signal(&dormir);
+          if (buf->livre == TAMANHO) pthread_cond_signal(&dormir);//produtor echeu o buffer e dormiu, acorda o produtor
           if(buf->livre > 0){
                buf->livre--;
                printf("%d - Consumido %d posicao %d\n",k,  buf->lista[buf->livre], buf->livre);
@@ -103,7 +103,7 @@ void regiao_critica(pilha* buf,int *c, int p){
                printf("Espacos ocupados %d\n",buf->ocupados);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
-          }else if(fim_prod == 0) pthread_cond_wait(&dormir,&lock);
+          }else if(fim_prod == 0) pthread_cond_wait(&dormir,&lock);// buffer esvaziou, consumidor dorme apenas se o produtor ainda nao finaliou
      }
      pthread_mutex_unlock(&lock);
 }
