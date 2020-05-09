@@ -29,7 +29,7 @@ int main(){
      buffer->vazios = TAMANHO;
      buffer->ocupados = 0;
 
-
+	//cria threads
      pthread_t prod, cons;
 	int p,c;
 
@@ -40,7 +40,7 @@ int main(){
 		puts("ERRO\n");
 		exit(0);
 	}
-
+	//espera as threads finalizarem finalizar 
      pthread_join( cons, NULL);
      pthread_join( prod, NULL);
      puts("\n\nFIM!!!!!!!\n\n");
@@ -53,9 +53,9 @@ void *consumir( void *ptr){
      pilha* b = (pilha*) ptr;
      int n;
 
-     for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
+     for(int j = 0; j<R*TAMANHO;j++){
 	     k++;
-          regiao_critica(b, &n , -1);
+          regiao_critica(b, &n , -1);// -1 indica que e o consumidor acessando a regiao critica
      }
 }
 
@@ -65,10 +65,10 @@ void *produzir( void *ptr){
      pilha* b = (pilha*) ptr;
      srand(time(0));
      int a;
-     for(int j = 0; j<R*TAMANHO;j++){//repeticoes, para testar o codigo
+     for(int j = 0; j<R*TAMANHO;j++){
 	     k++;
           a = rand() % 100;
-          regiao_critica(b ,NULL , a);
+          regiao_critica(b ,NULL , a);// NULL indica que é o produtor acessando a regiao critica
      }
 	fim_prod = 1;
 }
@@ -77,7 +77,7 @@ void regiao_critica(pilha* buf,int *c, int p){
 
      pthread_mutex_lock(&lock);
 
-     //escreve no buffer
+     //produtor escreve no buffer
      if (c == NULL){
           if (buf->livre == 0) pthread_cond_signal(&dormir);
           if(buf->livre < TAMANHO){
@@ -91,7 +91,7 @@ void regiao_critica(pilha* buf,int *c, int p){
           }else pthread_cond_wait(&dormir,&lock);
           
      }
-     //le do buffer
+     //consumidor le do buffer
      else if (p == -1){
           if (buf->livre == TAMANHO) pthread_cond_signal(&dormir);
           if(buf->livre > 0){
