@@ -103,7 +103,7 @@ void regiao_critica(pilha* buf,int *c, int p){
                printf("Espacos ocupados %d\n",buf->ocupados);
                *c = buf->lista[buf->livre];
                buf->lista[buf->livre] = -1;
-          }else if(fim_prod == 0) pthread_cond_wait(&dormir,&lock);// buffer esvaziou, consumidor dorme apenas se o produtor ainda nao finaliou
+          }else if(fim_prod == 0) pthread_cond_wait(&dormir,&lock);// buffer esvaziou, consumidor dorme apenas se o produtor ainda nao finalizou
      }
      pthread_mutex_unlock(&lock);
 }
