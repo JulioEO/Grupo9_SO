@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 		if(auxstream.fail()){//valor nao eh numero
 			cout<<"Digite um numero/n"
 		}
-		else if(tampag<1){//valor menor que 1
+		else if(tamendlog<1){//valor menor que 1
 			cout << "Digite um valor maior que zero/n"
 		}
 		else{//valor valido, sai do loop
@@ -54,7 +54,7 @@ int main(int argc, char const *argv[])
 		if(auxstream.fail()){//valor nao eh numero
 			cout<<"Digite um numero/n"
 		}
-		else if(tampag<1){//valor menor que 1
+		else if(tammemfis<1){//valor menor que 1
 			cout << "Digite um valor maior que zero/n"
 		}
 		else{//valor valido, sai do loop
@@ -71,7 +71,7 @@ int main(int argc, char const *argv[])
 		if(auxstream.fail()){//valor nao eh numero
 			cout<<"Digite um numero/n"
 		}
-		else if(tampag<1){//valor menor que 1
+		else if(tammemsec<1){//valor menor que 1
 			cout << "Digite um valor maior que zero/n"
 		}
 		else{//valor valido, sai do loop
