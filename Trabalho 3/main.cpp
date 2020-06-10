@@ -16,13 +16,12 @@ int main(int argc, char const *argv[])
         auxstream.clear();
 		getline(cin, auxstring);
 		auxstream << auxstring;
-		
 		auxstream >> tampag;
-		
+
 
 		if(auxstream.fail()){//valor nao eh numero
 
-            cout <<auxstream;
+            auxstream.str("");
 			cout<<"Digite um numero\n";
 		}
 		else if(tampag<1){//valor menor que 1
@@ -41,7 +40,7 @@ int main(int argc, char const *argv[])
 		auxstream >> tamendlog;
 
 		if(auxstream.fail()){//valor nao eh numero
-            
+            auxstream.str("");
 			cout<<"Digite um numero\n";
 		}
 		else if(tamendlog<1){//valor menor que 1
@@ -60,7 +59,7 @@ int main(int argc, char const *argv[])
 		auxstream >> tammemfis;
 
 		if(auxstream.fail()){//valor nao eh numero
-            
+            auxstream.str("");
 			cout<<"Digite um numero\n";
 		}
 		else if(tammemfis<1){//valor menor que 1
@@ -79,7 +78,7 @@ int main(int argc, char const *argv[])
 		auxstream >> tammemsec;
 
 		if(auxstream.fail()){//valor nao eh numero
-           
+            auxstream.str("");
 			cout<<"Digite um numero\n";
 		}
 		else if(tammemsec<1){//valor menor que 1
