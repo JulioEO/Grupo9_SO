@@ -13,12 +13,16 @@ int main(int argc, char const *argv[])
 	//blocos para receber os tamanhos do usuario
 	cout << "Digite o tamanho das paginas\n";
 	while(true){
+        auxstream.clear();
 		getline(cin, auxstring);
 		auxstream << auxstring;
+		cout <<auxstream <<"\n";
 		auxstream >> tampag;
+		cout <<auxstream<< "\n";
 
 		if(auxstream.fail()){//valor nao eh numero
-            auxstream.clear();
+
+            cout <<auxstream;
 			cout<<"Digite um numero\n";
 		}
 		else if(tampag<1){//valor menor que 1
@@ -31,6 +35,7 @@ int main(int argc, char const *argv[])
 
 	cout << "Digite o tamanho em bits do endereco logico\n";
 	while(true){
+        auxstream.clear();
 		getline(cin, auxstring);
 		auxstream << auxstring;
 		auxstream >> tamendlog;
@@ -47,33 +52,35 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-	cout << "Digite o tamanho da memoria fisica/n";
+	cout << "Digite o tamanho da memoria fisica\n";
 	while(true){
+        auxstream.clear();
 		getline(cin, auxstring);
 		auxstream << auxstring;
 		auxstream >> tammemfis;
 
 		if(auxstream.fail()){//valor nao eh numero
             auxstream.clear();
-			cout<<"Digite um numero/n";
+			cout<<"Digite um numero\n";
 		}
 		else if(tammemfis<1){//valor menor que 1
-			cout << "Digite um valor maior que zero/n";
+			cout << "Digite um valor maior que zero\n";
 		}
 		else{//valor valido, sai do loop
 			break;
 		}
 	}
 
-	cout << "Digite o tamanho em bits do endereco logico/n";
+	cout << "Digite o tamanho em bits da memoria secundaria\n";
 	while(true){
+        auxstream.clear();
 		getline(cin, auxstring);
 		auxstream << auxstring;
 		auxstream >> tammemsec;
 
 		if(auxstream.fail()){//valor nao eh numero
             auxstream.clear();
-			cout<<"Digite um numero/n";
+			cout<<"Digite um numero\n";
 		}
 		else if(tammemsec<1){//valor menor que 1
 			cout << "Digite um valor maior que zero\n";
