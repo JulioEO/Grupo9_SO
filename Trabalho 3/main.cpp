@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -9,6 +10,7 @@ int main(int argc, char const *argv[])
 	int tampag, tamendlog, tammemfis, tammemsec, numpag, numquad;//declaracao dos tamanho necessarios
 	string auxstring;//string auxiliar para obtencao de entrada do usuario
 	stringstream auxstream;//stream auxiliar para obtencao de entrada do usuario
+	vector <string> vstr;// armazena a informacao no arquivo
 
 	//blocos para receber os tamanhos do usuario
 	cout << "Digite o tamanho das paginas\n";
@@ -102,6 +104,12 @@ int main(int argc, char const *argv[])
 
 
 	ifstream file("arquivo.txt");
+	
+	while (getline(file,auxstring))// le o arquivo e salva cada linha em uma string
+    	{
+        	if(!auxstring.empty()) vstr.push_back(auxstring);        
+    	}
+
 	file.close();
 
 	return 0;
