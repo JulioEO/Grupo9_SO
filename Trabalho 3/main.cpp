@@ -2,15 +2,23 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <vector>
+#include "auxfunctions.h"
+#include "Classes.h"
+
 using namespace std;
+using namespace auxfunctions;
+using namespace Classes;
+
 
 int main(int argc, char const *argv[])
 {
 	int tampag, tamendlog, tammemfis, tammemsec, numpag, numquad;//declaracao dos tamanho necessarios
+	ifstream file;
+	int *processid;//contem o ID do processo relacionado a instrucao
+	int *address;//contem o endereco da instrucao do arquivo de entrada ou o tamanho da imagem do processo se for criado
+	char *instruction;//contem hot o tipo de instrucao do arquivo de entrada
 	string auxstring;//string auxiliar para obtencao de entrada do usuario
 	stringstream auxstream;//stream auxiliar para obtencao de entrada do usuario
-	vector <string> vstr;// armazena a informacao no arquivo
 
 	//blocos para receber os tamanhos do usuario
 	cout << "Digite o tamanho das paginas\n";
@@ -102,14 +110,25 @@ int main(int argc, char const *argv[])
 		return -1;
 	}
 
+	//inicializacao dos quadros
 
-	ifstream file("arquivo.txt");
-	
-	while (getline(file,auxstring))// le o arquivo e salva cada linha em uma string
-    	{
-        	if(!auxstring.empty()) vstr.push_back(auxstring);        
-    	}
 
+
+
+	file.open("arquivo.txt");//abertura do arquivo de leitura
+	//testa se o arquivo esta aberto
+	if (!file.is_open()) {
+		cout << "Erro na abertura do arquivo";
+		return -1;
+	}
+
+	//loop principal do simulador
+	while(true){
+		//funcao para ler uma linha do arquivo. Retorna o id do processo em processid, o tipo de instrucao em instruction
+		//e o endereco a ser acessado em addres; se a instrucao for de criacao, address contem o tamanho da imagem do processo
+		readfileline(file,processid,instruction, address);
+
+	}
 	file.close();
 
 	return 0;
