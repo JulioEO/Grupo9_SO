@@ -3,7 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "auxfunctions.h"
-#include "Classes.h"
+#include "Quadro.h"
 
 using namespace std;
 using namespace auxfunctions;

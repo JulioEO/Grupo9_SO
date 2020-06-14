@@ -1,9 +1,6 @@
-//auxfunctions header
+//auxfunctions.h
 #pragma once
-#include<iostream>
-#include<fstream>
-
-
+#include <fstream>
 
 namespace auxfunctions{
 
