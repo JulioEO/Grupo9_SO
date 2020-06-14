@@ -124,10 +124,12 @@ int main(int argc, char const *argv[])
 	}
 
 	//loop principal do simulador
-	while(true){
-		//funcao para ler uma linha do arquivo. Retorna o id do processo em processid, o tipo de instrucao em instruction
-		//e o endereco a ser acessado em addres; se a instrucao for de criacao, address contem o tamanho da imagem do processo
-		readfileline(file,processid,instruction, address);
+	//funcao readfileline le uma linha do arquivo. Retorna true se leu uma linha e false caso o contrario
+	//Tambem retorna o id do processo em processid, o tipo de instrucao em instruction
+	//e o endereco a ser acessado em addres; se a instrucao for de criacao, address contem o tamanho da imagem do processo
+	while(readfileline(file,processid,instruction, address)){
+		
+		break;
 
 	}
 	file.close();
