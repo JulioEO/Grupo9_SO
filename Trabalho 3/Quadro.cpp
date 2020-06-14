@@ -3,32 +3,32 @@
 #include "Quadro.h"
 using namespace Quadro_obj;
 
-Quadro_obj::Quadro(int s, bool u){
+Quadro::Quadro(int s){//construtor recebe o tamanho do quadro,
 	setSize(s);
-	setUse(u);
+	setinUse(false);
 	setProcessid(0);
 }
 
-void Quadro_obj::setProcessid(int pid){
+void Quadro::setProcessid(int pid){
 	processid = pid;
 }
 
-int Quadro_obj::getProcessid(){
+int Quadro::getProcessid(){
 	return processid;
 }
 
-void Quadro_obj::setSize(int s){
+void Quadro::setSize(int s){
 	size = s;
 }
 
-int Quadro_obj::getSize(){
-	return s;
+int Quadro::getSize(){
+	return size;
 }
 
-void Quadro_obj::setinUse(bool u){
+void Quadro::setinUse(bool u){
 	inuse = u;
 }
 
-bool Quadro_obj::inUse(){
+bool Quadro::inUse(){
 	return inuse;
 }

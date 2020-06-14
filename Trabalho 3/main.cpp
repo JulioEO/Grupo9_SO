@@ -2,12 +2,13 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "auxfunctions.h"
 #include "Quadro.h"
 
 using namespace std;
 using namespace auxfunctions;
-using namespace Classes;
+using namespace Quadro_obj;
 
 
 int main(int argc, char const *argv[])
@@ -111,7 +112,7 @@ int main(int argc, char const *argv[])
 	}
 
 	//inicializacao dos quadros
-
+    vector<Quadro> quadros(numquad,Quadro(tampag));
 
 
 

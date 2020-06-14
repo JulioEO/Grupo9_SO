@@ -7,7 +7,7 @@ namespace Quadro_obj{
 	class Quadro
 	{
 	public:
-		Quadro(int s,bool u);
+		Quadro(int s);
 		void setProcessid(int pid);
 		int getProcessid();
 		void setSize(int s);
@@ -17,7 +17,7 @@ namespace Quadro_obj{
 	private:
 		int processid;
 		bool inuse;
-		int size;	
+		int size;
 	};
-	
+
 }
