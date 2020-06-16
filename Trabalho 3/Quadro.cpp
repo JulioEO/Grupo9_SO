@@ -3,8 +3,9 @@
 #include "Quadro.h"
 using namespace Quadro_obj;
 
-Quadro::Quadro(int s){//construtor recebe o tamanho do quadro,
-	setSize(s);
+//construtor recebe o tamanho do quadro, coloca a flag de uso em falso e zera o id do processo
+Quadro::Quadro(int s){
+	size = s;
 	setinUse(false);
 	setProcessid(0);
 }
@@ -17,9 +18,6 @@ int Quadro::getProcessid(){
 	return processid;
 }
 
-void Quadro::setSize(int s){
-	size = s;
-}
 
 int Quadro::getSize(){
 	return size;
@@ -29,6 +27,7 @@ void Quadro::setinUse(bool u){
 	inuse = u;
 }
 
+//retorna true se o quadro estiver um uso, ou seja, tem uma pagina alocada
 bool Quadro::inUse(){
 	return inuse;
 }

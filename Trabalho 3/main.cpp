@@ -5,19 +5,24 @@
 #include <vector>
 #include "auxfunctions.h"
 #include "Quadro.h"
+//#include "Pagina.h"
+//#include "Processo.h"
+
 
 using namespace std;
 using namespace auxfunctions;
 using namespace Quadro_obj;
+//using namespace Processo_obj;
+//using namespace Pagina_obj;
 
 
 int main(int argc, char const *argv[])
 {
 	int tampag, tamendlog, tammemfis, tammemsec, numpag, numquad;//declaracao dos tamanho necessarios
 	ifstream file;
-	int *processid;//contem o ID do processo relacionado a instrucao
-	int *address;//contem o endereco da instrucao do arquivo de entrada ou o tamanho da imagem do processo se for criado
-	char *instruction;//contem hot o tipo de instrucao do arquivo de entrada
+	int processid = 0;//contem o ID do processo relacionado a instrucao
+	int address=0;//contem o endereco da instrucao do arquivo de entrada ou o tamanho da imagem do processo se for criado
+	char instruction='0';//contem hot o tipo de instrucao do arquivo de entrada
 	string auxstring;//string auxiliar para obtencao de entrada do usuario
 	stringstream auxstream;//stream auxiliar para obtencao de entrada do usuario
 
@@ -114,6 +119,9 @@ int main(int argc, char const *argv[])
 	//inicializacao dos quadros
     vector<Quadro> quadros(numquad,Quadro(tampag));
 
+    //TODO
+    //inicializacao do vetor de processos
+    //algoritmo LRU e
 
 
 	file.open("arquivo.txt");//abertura do arquivo de leitura
@@ -127,9 +135,37 @@ int main(int argc, char const *argv[])
 	//funcao readfileline le uma linha do arquivo. Retorna true se leu uma linha e false caso o contrario
 	//Tambem retorna o id do processo em processid, o tipo de instrucao em instruction
 	//e o endereco a ser acessado em addres; se a instrucao for de criacao, address contem o tamanho da imagem do processo
-	while(readfileline(file,processid,instruction, address)){
-		
-		break;
+	//se a instrucao for de CPU ou de E/S, address contem o numero da instrucao ou dispositivo
+	while(readfileline(file,&processid,&instruction, &address)){
+
+		switch(instruction){
+			//operacao de criacao de processo
+			case('C'):{
+				break;
+			}
+			//operacao de escrita
+			case('W'):{
+				break;
+			}
+			//operacao de leitura
+			case ('R'):{
+				break;
+			}
+
+			//operacao na CPU
+			case ('P'):{
+				cout<<"Processo "<< processid << " realizou operacao " << address << " na CPU.";
+				break;
+			}
+			//operacao de E/S
+			case('I'):{
+				cout<<"Processo "<< processid << " realizou operacao de E/S no dispositivo " << address;
+				break;
+			}
+
+		}
+
+		break;//para efeitos de teste. remover isso quando readfileline estiver funcionando
 
 	}
 	file.close();
