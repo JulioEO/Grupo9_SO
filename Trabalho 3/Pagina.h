@@ -7,8 +7,7 @@ namespace Pagina_obj{
 	class Pagina
 	{
 	public:
-		Pagina(int s);
-		~Pagina();
+		Pagina(int s);//ainda falta coisas para inicializar nesse construtor
 		int getSize();
 		void setInRAM(bool b);
 		bool isinRAM();
@@ -18,7 +17,6 @@ namespace Pagina_obj{
 		int getFrameposition();
 		bool getReference();
 		void setReference(bool r);
-	//TODO other functions
 	private:
 		bool inRAM;
 		int size;

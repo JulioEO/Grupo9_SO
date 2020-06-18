@@ -1,47 +1,48 @@
 //Pagina.cpp
+#include "Pagina.h"
 using namespace Pagina_obj;
 
 Pagina::Pagina(int s){
-
+	size= s;
+	inRAM = false;
+	ownerprocess = -1;
+	frameposition = -1;
+	reference =false;
 }
 
-Pagina::~Pagina(){
-
-}
 
 int Pagina::getSize(){
-	
+	return size;
 }
 
-void setInRAM(bool b){
-
+void Pagina::setInRAM(bool b){
+	inRAM = b;
 }
 
-bool isinRAM(){
-
+bool Pagina::isinRAM(){
+	return inRAM;
 }
 
-void setOwner(int owner){
-
+void Pagina::setOwner(int owner){
+	ownerprocess = owner;
 }
 
-int getOwner(){
-
+int Pagina::getOwner(){
+	return ownerprocess;
 }
 
-
-void setFramepos(int framepos){
-
+void Pagina::setFramepos(int framepos){
+	frameposition =framepos;
 }
 
-int getFrameposition(){
-
+int Pagina::getFrameposition(){
+	return frameposition;
 }
 
-bool getReference(){
-
+bool Pagina::getReference(){
+	return reference;
 }
 
-void setReference(bool r){
-
+void Pagina::setReference(bool r){
+	reference =r;
 }

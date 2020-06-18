@@ -23,6 +23,7 @@ int Quadro::getSize(){
 	return size;
 }
 
+
 void Quadro::setinUse(bool u){
 	inuse = u;
 }

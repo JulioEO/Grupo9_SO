@@ -5,15 +5,15 @@
 #include <vector>
 #include "auxfunctions.h"
 #include "Quadro.h"
-//#include "Pagina.h"
-//#include "Processo.h"
+#include "Pagina.h"
+#include "Processo.h"
 
 
 using namespace std;
 using namespace auxfunctions;
 using namespace Quadro_obj;
-//using namespace Processo_obj;
-//using namespace Pagina_obj;
+using namespace Processo_obj;
+using namespace Pagina_obj;
 
 
 int main(int argc, char const *argv[])
@@ -116,12 +116,12 @@ int main(int argc, char const *argv[])
 		return -1;
 	}
 
+
 	//inicializacao dos quadros
     vector<Quadro> quadros(numquad,Quadro(tampag));
 
-    //TODO
     //inicializacao do vetor de processos
-    //algoritmo LRU e
+    vector<Processo> processos;
 
 
 	file.open("arquivo.txt");//abertura do arquivo de leitura
@@ -154,13 +154,17 @@ int main(int argc, char const *argv[])
 
 			//operacao na CPU
 			case ('P'):{
-				cout<<"Processo "<< processid << " realizou operacao " << address << " na CPU.";
+				cout<<"Processo "<< processid << " realizou operacao " << address << " na CPU.\n";
 				break;
 			}
 			//operacao de E/S
 			case('I'):{
-				cout<<"Processo "<< processid << " realizou operacao de E/S no dispositivo " << address;
+				cout<<"Processo "<< processid << " realizou operacao de E/S no dispositivo " << address << "\n";
 				break;
+			}
+			default:{
+				cout<< "Alguma coisa deu errado";
+				return -1;
 			}
 
 		}
