@@ -141,6 +141,7 @@ int main(int argc, char const *argv[])
 		switch(instruction){
 			//operacao de criacao de processo
 			case('C'):{
+
 				break;
 			}
 			//operacao de escrita
@@ -169,7 +170,7 @@ int main(int argc, char const *argv[])
 
 		}
 
-		break;//para efeitos de teste. remover isso quando readfileline estiver funcionando
+		//break;//para efeitos de teste. remover isso quando readfileline estiver funcionando
 
 	}
 	file.close();

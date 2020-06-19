@@ -10,6 +10,7 @@ namespace Processo_obj{
 	{
 	public:
 		Processo(int m_id,int m_size,int pagenumber, int pagesize);
+		Pagina getPagina(int i);
 		int getId();
 		int getSize();
 

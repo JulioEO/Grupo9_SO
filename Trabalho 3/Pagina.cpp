@@ -2,10 +2,10 @@
 #include "Pagina.h"
 using namespace Pagina_obj;
 
-Pagina::Pagina(int s){
+Pagina::Pagina(int s, int owner){
 	size= s;
 	inRAM = false;
-	ownerprocess = -1;
+	ownerprocess = owner;
 	frameposition = -1;
 	reference =false;
 }
