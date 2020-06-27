@@ -141,15 +141,21 @@ int main(int argc, char const *argv[])
 		switch(instruction){
 			//operacao de criacao de processo
 			case('C'):{
-
+				//inicializa um processo eo coloca no vetor de processos
+				processos.push_back(processo(processid,address,numpag,tampag));
+				
+				//aloca frames as paginas do processo recem criado
+				//frameallocation(processos.back(),quadros,numquad,address,tampag);
 				break;
 			}
 			//operacao de escrita
 			case('W'):{
+				
 				break;
 			}
 			//operacao de leitura
 			case ('R'):{
+
 				break;
 			}
 
@@ -164,7 +170,7 @@ int main(int argc, char const *argv[])
 				break;
 			}
 			default:{
-				cout<< "Alguma coisa deu errado";
+				cout<< "Erro na leitura do arquivo";
 				return -1;
 			}
 

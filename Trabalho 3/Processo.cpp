@@ -11,7 +11,7 @@ Processo::Processo(int m_id,int m_size,int pagenumber, int pagesize){
 
 }
 
-Pagina Processo::getPagina(int i){
+Pagina &Processo::getPagina(int i){
 	return pagetable.at(i);
 }
 

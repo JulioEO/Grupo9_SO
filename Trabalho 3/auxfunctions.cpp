@@ -27,4 +27,6 @@ bool auxfunctions::readfileline(std::ifstream &file,int* pid, char* inst, int* a
     return true;
 }
 
+//int frameallocation(processos.back(),quadros,numquad,address,tampag);
+
 
