@@ -2,6 +2,7 @@
 #include "Pagina.h"
 using namespace Pagina_obj;
 
+//inicializa o tamanho, o processo dono da pagina e as flags necessarias
 Pagina::Pagina(int s, int owner){
 	size= s;
 	inRAM = false;

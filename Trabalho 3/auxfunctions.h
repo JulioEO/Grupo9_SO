@@ -15,7 +15,9 @@ using namespace Quadro_obj;
 namespace auxfunctions{
 
     bool readfileline(std::ifstream &file ,int* pid,char* inst,int* addr);
-    void frameallocation(Processo& pro, std::vector<Quadro> &quadros, int i, int idquadro,std::queue<Pagina*> &filarelogio);
-    int algoritmorelogio(int numquad,std::vector<Quadro> &quadros , std::queue<Pagina*> &filarelogio);
+    void frameallocationclock(Processo& pro, std::vector<Quadro> &quadros, int i, int idquadro);
+    int algoritmorelogio(std::vector<Quadro> &quadros , std::vector<Pagina*> &relogio,unsigned int& iterator, int idpagina,Processo& pro);
 	int findprocess(int processid, std::vector<Processo> &process);
+	void frameallocationsecond(Processo& pro,std::vector<Quadro> &quadros, int i, int idquadro,std::queue<Pagina*> &filasecond);
+	int algoritmosecondchance(std::vector<Quadro> &quadros , std::queue<Pagina*> &filasecond);
 }
