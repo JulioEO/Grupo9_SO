@@ -1,6 +1,5 @@
 //Quadro.h
 #pragma once
-#include <vector>
 
 namespace Quadro_obj{
     //classe Quadro: representa um quadro na memoria principal do simulador. Contem o id do processo alocado ao quadro, uma flag se estiver em uso
@@ -14,6 +13,7 @@ namespace Quadro_obj{
 		int getSize();
 		void setinUse(bool u);
 		bool inUse();
+
 	private:
 		int processid;
 		bool inuse;

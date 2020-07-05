@@ -1,5 +1,4 @@
 //Quadro.cpp
-#include <iostream>
 #include "Quadro.h"
 using namespace Quadro_obj;
 

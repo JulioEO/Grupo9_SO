@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <queue>
 #include "auxfunctions.h"
 #include "Quadro.h"
 #include "Pagina.h"
@@ -20,9 +21,10 @@ int main(int argc, char const *argv[])
 {
 	int tampag, tamendlog, tammemfis, tammemsec, numpag, numquad;//declaracao dos tamanho necessarios
 	ifstream file;
+	queue<Pagina*> filarelogio;//fila para a execucao do algoritmo do relogio
 	int processid = 0;//contem o ID do processo relacionado a instrucao
 	int address=0;//contem o endereco da instrucao do arquivo de entrada ou o tamanho da imagem do processo se for criado
-	char instruction='0';//contem hot o tipo de instrucao do arquivo de entrada
+	char instruction='0';//contem o tipo de instrucao do arquivo de entrada
 	string auxstring;//string auxiliar para obtencao de entrada do usuario
 	stringstream auxstream;//stream auxiliar para obtencao de entrada do usuario
 
@@ -124,6 +126,7 @@ int main(int argc, char const *argv[])
     vector<Processo> processos;
 
 
+
 	file.open("arquivo.txt");//abertura do arquivo de leitura
 	//testa se o arquivo esta aberto
 	if (!file.is_open()) {
@@ -141,21 +144,41 @@ int main(int argc, char const *argv[])
 		switch(instruction){
 			//operacao de criacao de processo
 			case('C'):{
+
+				int idquadro;//indice do quadro que sera alocado
+				int framesalocados = address/tampag;//quantidade de quadros que serao alocados
+
+				//se o processo couber em menos de um  quadro, aloca um quadro
+				if(framesalocados <1){framesalocados =1;}
+
 				//inicializa um processo eo coloca no vetor de processos
-				processos.push_back(processo(processid,address,numpag,tampag));
-				
-				//aloca frames as paginas do processo recem criado
-				//frameallocation(processos.back(),quadros,numquad,address,tampag);
+				processos.push_back(Processo(processid,address,numpag,tampag));
+
+				//loop que aloca os quadros
+				for (int i = 0; i<framesalocados;i++){
+
+					//utiliza o algoritmo relogio para encontrar um quadro vazio
+					idquadro = algoritmorelogio(numquad,quadros,filarelogio);
+					if(idquadro == -1){cout << "Algo de errado ocorreu!(relogio)"; return 1;}
+
+					//aloca o quadro a pagina i
+					frameallocation(processos.back(),quadros,i,idquadro,filarelogio);
+				}
+
 				break;
 			}
 			//operacao de escrita
 			case('W'):{
-				
+					int indice = findprocess(processid,processos);
+					if(indice ==-1){cout << "Algo de errado ocorreu!(find)"; return 1;}
+					//readorwrite();
 				break;
 			}
 			//operacao de leitura
 			case ('R'):{
-
+					int indice = findprocess(processid,processos);
+					if(indice ==-1){cout << "Algo de errado ocorreu!(find)"; return 1;}
+					
 				break;
 			}
 

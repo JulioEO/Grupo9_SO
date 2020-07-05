@@ -7,7 +7,7 @@ namespace Pagina_obj{
 	class Pagina
 	{
 	public:
-		Pagina(int s, int owner);//ainda falta coisas para inicializar nesse construtor
+		Pagina(int s, int owner);
 		int getSize();
 		void setInRAM(bool b);
 		bool isinRAM();
